@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { ITunesService } from './services/itunes.service';
 import { TokenService } from './services/token.service';
 import { SampleComponent } from './sample/sample.component';
 
@@ -15,7 +16,7 @@ import { SampleComponent } from './sample/sample.component';
   imports: [
     BrowserModule
   ],
-  providers: [TokenService],
+  providers: [ITunesService, TokenService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
