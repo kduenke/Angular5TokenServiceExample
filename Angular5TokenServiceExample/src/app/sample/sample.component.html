@@ -1,3 +1,16 @@
-<p>
-  sample works!
-</p>
+<input type="search"
+       class="form-control"
+       placeholder="Search..."
+       #SearchBox />
+<button type="button"
+        class="btn btn-primary"
+        (click)="ExecuteSearch(SearchBox.value)">
+  Search
+</button>
+
+<div>Number of Results: {{ResultCount}}</div>
+<ul>
+  <li *ngFor="let item of Results">
+    Track #{{item.trackNumber}} on {{item.collectionName}} - {{item.trackName}} (${{item.trackPrice}})
+  </li>
+</ul>

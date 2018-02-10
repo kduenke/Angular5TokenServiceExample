@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ITunesService } from '../services/itunes.service';
+import { IITunesItem, IITunesResponse } from '../models/ITunesEntities';
 
 @Component({
   selector: 'app-sample',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SampleComponent implements OnInit {
 
-  constructor() { }
+  private ResultCount: number = 0;
+  private Results: IITunesItem[] = [];
+
+  constructor(private iTunesService: ITunesService) { }
 
   ngOnInit() {
+  }
+
+  public async ExecuteSearch(term: string): Promise<void> {
+    const iTunesResponse: IITunesResponse = await this.iTunesService.Search(term);
+    this.ResultCount = iTunesResponse.resultCount;
+    this.Results = iTunesResponse.results;
   }
 
 }
